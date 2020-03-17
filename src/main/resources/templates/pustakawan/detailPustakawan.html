@@ -21,7 +21,7 @@
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">Pustakawan</li>
+                    <li class="breadcrumb-item">Beranda</li>
                   <li class="breadcrumb-item active">Detail</li>
                 </ol>
               </div>
@@ -32,44 +32,49 @@
         <section class="content">
           <div class="container-fluid">
             <div class="row">
-                <h5>Nama</h5>
-                <div class="box">
-                    <span th:text="${data.nama}"></span>
+              <div class="col-md-12">
+                <a th:href="@{'/'}">
+                  <button type="button" class="btn bg-gradient-info">Kembali ke Beranda</button>
+                </a>
+                <br><br>
+                <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Detail Pustakawan</h4>
                 </div>
-                <h5>NIP</h5>
-                <div class="box">
-                    <span th:text="${data.nip}"></span>
-                </div>
-                <h5>Tempat Lahir</h5>
-                <div class="box">
-                    <span th:text="${data.tempatLahir}"></span><br>
-                </div>
-                <h5>Tanggal Lahir</h5>
-                <div class="box">
-                    <span th:text="${data.tanggalLahir}"></span>
-                </div>
-                <h5>Jenis Kelamin</h5>
-                <div class="box">
-                    <span th:if="${data.jenisKelamin == 1}">Laki-laki</span>
-                    <span th:if="${data.jenisKelamin == 2}">Perempuan</span>
-                </div>
-                <h5>Spesialisasi</h5>
-                <div class="box">
-                    <span th:if="${data.spesialisasiPustakawan.size() == 0}">-</span>
-                    <span th:if="${data.spesialisasiPustakawan.size() == 1}">
-                        <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
-                            <span th:text="${spesialisasi.nama}"></span>
+                <div class="card-body">
+                  <dl class="row">
+                    <dt class="col-sm-4">Nama</dt>
+                    <dd class="col-sm-8" th:text="${data.nama}"></dd>
+                    <dt class="col-sm-4">NIP</dt>
+                    <dd class="col-sm-8" th:text="${data.nip}"></dd>
+                    <dt class="col-sm-4">Tempat Lahir</dt>
+                    <dd class="col-sm-8" th:text="${data.tempatLahir}"></dd>
+                    <dt class="col-sm-4">Tanggal Lahir</dt>
+                    <dd class="col-sm-8" th:text="${data.tanggalLahir}"></dd>
+                    <dt class="col-sm-4">Jenis Kelamin</dt>
+                    <dd class="col-sm-8" th:if="${data.jenisKelamin == 1}">Laki-laki</dd>
+                    <dd class="col-sm-8" th:if="${data.jenisKelamin == 2}">Perempuan</dd>
+                    <dt class="col-sm-4">Spesialisasi</dt>
+                    <dd class="col-sm-8">
+                        <span th:if="${data.spesialisasiPustakawan.size() == 0}">-</span>
+                        <span th:if="${data.spesialisasiPustakawan.size() == 1}">
+                            <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
+                                <span th:text="${spesialisasi.nama}"></span>
+                            </span>
                         </span>
-                    </span>
-                    <span th:if="${data.spesialisasiPustakawan.size() > 1}">
-                        <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
-                            <span th:if="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
-                                th:text="${spesialisasi.nama} + ','"></span>
-                            <span th:unless="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
-                                th:text="${spesialisasi.nama}"></span>
+                        <span th:if="${data.spesialisasiPustakawan.size() > 1}">
+                            <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
+                                <span th:if="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                                    th:text="${spesialisasi.nama} + ','"></span>
+                                <span th:unless="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                                    th:text="${spesialisasi.nama}"></span>
+                            </span>
                         </span>
-                    </span>
+                    </dd>
+                  </dl>
                 </div>
+                <div class="card-footer clearfix"></div>
+              </div>
             </div>
           </div>
         </section>
