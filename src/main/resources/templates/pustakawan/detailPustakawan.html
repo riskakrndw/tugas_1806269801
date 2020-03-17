@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Beranda</title>
+      <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+      <object th:include="fragments/fragment :: navbar" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: aside" th:remove="tag"></object>
+
+    
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Detail Pustakawan</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">Pustakawan</li>
+                  <li class="breadcrumb-item active">Detail</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+                <h5>Nama</h5>
+                <div class="box">
+                    <span th:text="${data.nama}"></span>
+                </div>
+                <h5>NIP</h5>
+                <div class="box">
+                    <span th:text="${data.nip}"></span>
+                </div>
+                <h5>Tempat Lahir</h5>
+                <div class="box">
+                    <span th:text="${data.tempatLahir}"></span><br>
+                </div>
+                <h5>Tanggal Lahir</h5>
+                <div class="box">
+                    <span th:text="${data.tanggalLahir}"></span>
+                </div>
+                <h5>Jenis Kelamin</h5>
+                <div class="box">
+                    <span th:if="${data.jenisKelamin == 1}">Laki-laki</span>
+                    <span th:if="${data.jenisKelamin == 2}">Perempuan</span>
+                </div>
+                <h5>Spesialisasi</h5>
+                <div class="box">
+                    <span th:if="${data.spesialisasiPustakawan.size() == 0}">-</span>
+                    <span th:if="${data.spesialisasiPustakawan.size() == 1}">
+                        <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
+                            <span th:text="${spesialisasi.nama}"></span>
+                        </span>
+                    </span>
+                    <span th:if="${data.spesialisasiPustakawan.size() > 1}">
+                        <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
+                            <span th:if="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                                th:text="${spesialisasi.nama} + ','"></span>
+                            <span th:unless="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                                th:text="${spesialisasi.nama}"></span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <object th:include="fragments/fragment :: footer" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: aside_control" th:remove="tag"></object>
+    </div>
+  </body>
+</html>
