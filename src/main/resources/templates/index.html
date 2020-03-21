@@ -36,7 +36,7 @@
                   <button type="button" class="btn bg-gradient-info">Tambah Data Pustakawan</button>
                 </a>
                 <br><br>
-                <div class="card">
+                <div class="card card-info">
                 <div class="card-header">
                   <h4 class="card-title">Daftar Pustakawan</h4>
                 </div>
@@ -66,17 +66,17 @@
                         <span th:if="${data.jenisKelamin == 2}">Perempuan</span>
                       </td>
                       <td>
-                        <span th:if="${data.spesialisasiPustakawan.size() == 0}">-</span>
-                        <span th:if="${data.spesialisasiPustakawan.size() == 1}">
-                          <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
+                        <span th:if="${data.listPustakawan.size() == 0}">-</span>
+                        <span th:if="${data.listPustakawan.size() == 1}">
+                          <span th:each="spesialisasi : ${data.listPustakawan}">
                             <span th:text="${spesialisasi.nama}"></span>
                           </span>
                         </span>
-                        <span th:if="${data.spesialisasiPustakawan.size() > 1}">
-                          <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
-                            <span th:if="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                        <span th:if="${data.listPustakawan.size() > 1}">
+                          <span th:each="spesialisasi : ${data.listPustakawan}">
+                            <span th:if="${spesialisasiStat.index != data.listPustakawan.size()-1}"
                               th:text="${spesialisasi.nama} + ','"></span>
-                            <span th:unless="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                            <span th:unless="${spesialisasiStat.index != data.listPustakawan.size()-1}"
                               th:text="${spesialisasi.nama}">
                             </span>
                           </span>

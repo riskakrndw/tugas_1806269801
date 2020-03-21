@@ -2,11 +2,26 @@ package com.apap.tugas.tugas_1806269801.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.apache.commons.text.RandomStringGenerator;
 
 @Entity
 @Table(name = "pustakawan")
@@ -25,8 +40,8 @@ public class PustakawanModel implements Serializable{
     @Column(name = "nip", nullable = false, unique = true)
     private String nip;
 
-    @NotNull
-    @Column(name = "tempat_lahir")
+    @Size(max = 100)
+    @Column(name = "tempat_lahir", nullable = true)
     private String tempatLahir;
 
     @NotNull
@@ -37,20 +52,19 @@ public class PustakawanModel implements Serializable{
     @Column(name = "jenis_kelamin", nullable = false)
     private int jenisKelamin;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "spesialisasi_pustakawan",
-        joinColumns = @JoinColumn(name = "pustakawan_id"),
-        inverseJoinColumns = @JoinColumn(name = "spesialisasi_id")
+    @ManyToMany(
+        mappedBy = "spesialisasiPustakawan", 
+        fetch = FetchType.LAZY
     )
-    private List<SpesialisasiModel> spesialisasiPustakawan;
 
-    public void setSpesialisasiPustakawan(List<SpesialisasiModel> spesialisasiPustakawan){
-        this.spesialisasiPustakawan = spesialisasiPustakawan;
+    private List<SpesialisasiModel> listPustakawan;
+
+    public void setListPustakawan(List<SpesialisasiModel> listPustakawan){
+        this.listPustakawan = listPustakawan;
     }
 
-    public List<SpesialisasiModel> getSpesialisasiPustakawan(){
-        return this.spesialisasiPustakawan;
+    public List<SpesialisasiModel> getListPustakawan(){
+        return listPustakawan;
     }
 
     @OneToMany(
@@ -115,5 +129,9 @@ public class PustakawanModel implements Serializable{
 
     public int getJenisKelamin(){
         return jenisKelamin;
+    }
+
+    public String generateNip(){
+        return LocalDate.now().getYear() + new SimpleDateFormat("ddMMyy").format(getTanggalLahir()) + getJenisKelamin() + new RandomStringGenerator.Builder().withinRange('A', 'Z').build().generate(2);
     }
 }

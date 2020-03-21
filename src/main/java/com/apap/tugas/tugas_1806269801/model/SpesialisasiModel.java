@@ -25,18 +25,22 @@ public class SpesialisasiModel implements Serializable{
     private String deskripsi;
 
     @ManyToMany(
-        mappedBy = "spesialisasiPustakawan", 
-        fetch = FetchType.LAZY
+        fetch = FetchType.LAZY,
+        cascade = CascadeType.PERSIST
     )
+    @JoinTable(
+        name = "spesialisasi_pustakawan",
+        joinColumns = @JoinColumn(name = "spesialisasi_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "pustakawan_id", referencedColumnName = "id")
+    )
+    private List<PustakawanModel> spesialisasiPustakawan;
 
-    private List<PustakawanModel> listPustakawan;
-
-    public void setListPustakawan(List<PustakawanModel> listPustakawan){
-        this.listPustakawan = listPustakawan;
+    public void setSpesialisasiPustakawan(List<PustakawanModel> spesialisasiPustakawan){
+        this.spesialisasiPustakawan = spesialisasiPustakawan;
     }
 
-    public List<PustakawanModel> getListPustakawan(){
-        return this.listPustakawan;
+    public List<PustakawanModel> getSpesialisasiPustakawan(){
+        return spesialisasiPustakawan;
     }
     
     public void setId(long id){

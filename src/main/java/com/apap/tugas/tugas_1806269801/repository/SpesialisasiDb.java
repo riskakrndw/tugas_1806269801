@@ -6,11 +6,9 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Spesialisasi Db
- */
+*/
 
- @Repository
- public interface SpesialisasiDb extends JpaRepository<SpesialisasiModel, Long>{
-    SpesialisasiModel findById(long id);
-
-    
- }
+@Repository
+public interface SpesialisasiDb extends JpaRepository<SpesialisasiModel, Long>{
+   SpesialisasiModel findById(long id);
+}

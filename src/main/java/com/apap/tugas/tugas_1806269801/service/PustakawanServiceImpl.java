@@ -8,9 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import com.apap.tugas.tugas_1806269801.model.PustakawanModel;
-import com.apap.tugas.tugas_1806269801.model.SpesialisasiModel;
 import com.apap.tugas.tugas_1806269801.repository.PustakawanDb;
-import com.apap.tugas.tugas_1806269801.repository.SpesialisasiDb;
 
 /**
  * PustakawanServiceImpl
@@ -21,9 +19,6 @@ import com.apap.tugas.tugas_1806269801.repository.SpesialisasiDb;
 public class PustakawanServiceImpl implements PustakawanService{
     @Autowired
     private PustakawanDb pustakawanDb;
-
-    @Autowired
-    private SpesialisasiDb spesialisasiDb;
 
     @Override
     public PustakawanModel getPustakawanById(long id){
@@ -41,8 +36,13 @@ public class PustakawanServiceImpl implements PustakawanService{
     }
 
     @Override
-    public List<SpesialisasiModel> getAllSpesialisasi(){
-        return spesialisasiDb.findAll();
+    public void generateNip(PustakawanModel pustakawan){
+        pustakawan.setNip(pustakawan.generateNip());
     }
 
+    @Override
+    public void addPustakawan(PustakawanModel pustakawan){
+        generateNip(pustakawan);
+        pustakawanDb.save(pustakawan);
+    }
 }

@@ -37,7 +37,7 @@ public class TempatPustakawanModel implements Serializable {
     }
     
     public PerpustakaanModel getPerpustakaan() {
-		return this.perpustakaan;
+		return perpustakaan;
 	}
 
 	@NotNull
