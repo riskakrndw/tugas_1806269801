@@ -84,13 +84,13 @@
                       </td>
                       <td>
                         <a th:href="@{'/'}">
-                          <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-calendar-plus"> Jadwal</i></button>
+                          <button type="button" class="btn btn-outline-success btn-sm">Jadwal</button>
                         </a>
                         <a th:href="@{'/pustakawan/update/' + ${data.id}}">
-                          <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"> Ubah </i></button>
+                          <button type="button" class="btn btn-outline-primary btn-sm">Ubah</button>
                         </a>
                         <a th:href="@{'/pustakawan/delete/' + ${data.id}}">
-                          <button type="button" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"> Hapus</i></button>
+                          <button type="button" class="btn btn-outline-danger btn-sm" onclick="return confirm('Apakah anda yakin akan menghapus data?');">Hapus</button>
                         </a>
                       </td>
                     </tr>

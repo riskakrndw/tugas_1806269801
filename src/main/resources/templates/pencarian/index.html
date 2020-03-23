@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Beranda</title>
+      <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+      <object th:include="fragments/fragment :: navbar" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: aside" th:remove="tag"></object>
+    
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Pencarian Data Pustakawan</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Search</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <br>
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">Pencarian Data Pustakawan</h3>
+                    
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+                                </div>
+                            </div>
+                            <form th:action="@{/cari}" method="GET"></form>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="tanggalLahir" class="col-sm-2 col-form-label">Nama Perpustakaan</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="perpustakaan">
+                                            <option value="0">Pilih Perpustakaan</option>
+                                            <option th:each="dataPerpustakaan : ${dataPerpustakaan}" 
+                                                th:value="${dataPerpustakaan.id}" 
+                                                th:text="${dataPerpustakaan.nama}">
+                                            </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="tanggalLahir" class="col-sm-2 col-form-label">Spesialisasi</label>
+                                        <div class="col-sm-10">
+                                        <select class="form-control" name="spesialisasi">
+                                            <option value="0">Pilih Spesialisasi</option>
+                                            <option th:each="dataSpesialisasi : ${dataSpesialisasi}" 
+                                            th:value="${dataSpesialisasi.id}" 
+                                            th:text="${dataSpesialisasi.nama}">
+                                            </option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer clearfix">
+                                    <button type="submit" class="btn bg-gradient-info" name="submit">Cari</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                      <br>
+                      <div class="card card-info">
+                      <div class="card-header">
+                        <h4 class="card-title">Daftar Pustakawan</h4>
+                      </div>
+                      <div class="card-body">
+                        <table class="table table-bordered">
+                        <thead>                  
+                          <tr>
+                            <th style="width: 10px">No</th>
+                            <th>Nama</th>
+                            <th>NIP</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Spesialisasi</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:each="data, iterationStatus: ${data}">
+                            <td th:text="' ' + ${iterationStatus.count}"></td>
+                            <td><a th:href="@{'/pustakawan?nip=' + ${data.nip}}" th:text="' ' + ${data.nama}"></a></td>
+                            <td th:text="' ' + ${data.nip}"></td>
+                            <td th:text="' ' + ${data.tempatLahir}"></td>
+                            <td th:text="' ' + ${data.tanggalLahir}"></td>
+                            <td>
+                              <span th:if="${data.jenisKelamin == 1}">Laki-laki</span>
+                              <span th:if="${data.jenisKelamin == 2}">Perempuan</span>
+                            </td>
+                            <td>
+                              <span th:if="${data.listPustakawan.size() == 0}">-</span>
+                              <span th:if="${data.listPustakawan.size() == 1}">
+                                <span th:each="spesialisasi : ${data.listPustakawan}">
+                                  <span th:text="${spesialisasi.nama}"></span>
+                                </span>
+                              </span>
+                              <span th:if="${data.listPustakawan.size() > 1}">
+                                <span th:each="spesialisasi : ${data.listPustakawan}">
+                                  <span th:if="${spesialisasiStat.index != data.listPustakawan.size()-1}"
+                                    th:text="${spesialisasi.nama} + ','"></span>
+                                  <span th:unless="${spesialisasiStat.index != data.listPustakawan.size()-1}"
+                                    th:text="${spesialisasi.nama}">
+                                  </span>
+                                </span>
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                        </table>
+                      </div>
+                      <div class="card-footer clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+
+      <object th:include="fragments/fragment :: footer" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: aside_control" th:remove="tag"></object>
+    </div>
+  </body>
+</html>

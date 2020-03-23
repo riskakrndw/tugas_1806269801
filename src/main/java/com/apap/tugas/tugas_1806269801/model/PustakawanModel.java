@@ -52,9 +52,11 @@ public class PustakawanModel implements Serializable{
     @Column(name = "jenis_kelamin", nullable = false)
     private int jenisKelamin;
 
-    @ManyToMany(
-        mappedBy = "spesialisasiPustakawan", 
-        fetch = FetchType.LAZY
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "spesialisasi_pustakawan",
+        joinColumns = @JoinColumn(name = "pustakawan_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "spesialisasi_id", referencedColumnName = "id")
     )
 
     private List<SpesialisasiModel> listPustakawan;

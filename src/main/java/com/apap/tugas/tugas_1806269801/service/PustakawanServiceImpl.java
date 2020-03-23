@@ -45,4 +45,19 @@ public class PustakawanServiceImpl implements PustakawanService{
         generateNip(pustakawan);
         pustakawanDb.save(pustakawan);
     }
+
+    @Override
+    public void updatePustakawan(long id, PustakawanModel pustakawan) {
+        PustakawanModel newPustakawan = getPustakawanById(id);
+        newPustakawan.setNama(pustakawan.getNama());
+        newPustakawan.setTempatLahir(pustakawan.getTempatLahir());
+        newPustakawan.setTanggalLahir(pustakawan.getTanggalLahir());
+        newPustakawan.setJenisKelamin(pustakawan.getJenisKelamin());
+        newPustakawan.setListPustakawan(pustakawan.getListPustakawan());
+    }
+
+    @Override
+    public void deleteById(long id){
+        pustakawanDb.delete(this.getPustakawanById(id));
+    }
 }

@@ -71,8 +71,8 @@
                         </li>
                         <li class="nav-item">
                             <a th:href="@{'/perpustakaan'}" class="nav-link active" th:if="${activeNav} == 'perpustakaan'">
-                            <i class="nav-icon fas fa-file"></i>
-                            <p>Perpustakaan</p>
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>Perpustakaan</p>
                             </a>
                             <a th:href="@{'/perpustakaan'}" class="nav-link" th:unless="${activeNav} == 'perpustakaan'">
                                 <i class="nav-icon fas fa-file"></i>
@@ -81,14 +81,18 @@
                         </li>
                         <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>Statistik</p>
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>Statistik</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                            <i class="nav-icon fas fa-search"></i>
-                            <p>Pencarian</p>
+                            <a th:href="@{'/cari'}" class="nav-link active" th:if="${activeNav} == 'pencarian'">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p>Pencarian</p>
+                            </a>
+                            <a th:href="@{'/cari'}" class="nav-link" th:unless="${activeNav} == 'pencarian'">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p>Pencarian</p>
                             </a>
                         </li>
                         

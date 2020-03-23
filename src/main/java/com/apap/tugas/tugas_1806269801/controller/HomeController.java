@@ -27,6 +27,6 @@ public class HomeController{
         model.addAttribute("data", dataPustakawan);
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
-        return "index";
+        return "pustakawan/index";
     }
 }

@@ -31,10 +31,18 @@
           <div class="container-fluid">
             <div class="row">
 				<div class="col-md-12">
-					<div class="callout callout-success">
+					<div class="callout callout-success" th:if="${type} == 'success'">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<h5><i class="icon fas fa-check-circle"></i> Notification!</h5>
-						Tambah Data Pustakawan berhasil!
+						<h4><i class="icon fas fa-check-circle"></i> Notification!</h4>
+            <a th:if="${typeMsg} == 'add'" th:text="${msg}"></a>
+            <a th:if="${typeMsg} == 'delete'" th:text="${msg}"></a>
+            <a th:if="${typeMsg} == 'edit'" th:text="${msg}"></a>
+          </div>
+          
+          <div class="callout callout-danger" th:if="${typeMsg} == 'notFound'">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<h4><i class="icon fas fa-exclamation-triangle"></i> Notification!</h4>
+            <a  th:text="${msg}"></a>
 					</div>
 
 					<a th:href="@{'/'}">

@@ -46,8 +46,9 @@
                   <div class="card-header">
                     <h4 class="card-title">Form Tambah Pustakawan</h4>
                   </div>
-                  <form th:action="@{/pustakawan/tambah}" th:object="${dataPustakawan}" method="POST">
-                    <input type="hidden" th:field="*{id}"/>
+                  <form th:action="@{/pustakawan/update/{id}(id=${dataPustakawan.id})}" th:object="${dataPustakawan}" method="POST">
+                    <input type="hidden" name="id" th:field="*{id}"/>
+                    <input type="hidden" name="nip" th:field="*{nip}"/>
                     <div class="card-body">
                       <div class="form-group row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
@@ -81,16 +82,19 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="tanggalLahir" class="col-sm-2 col-form-label">Spesialisasi</label>
-                        <div class="col-sm-10">
-                          <select class="form-control" name="spesialisasi" >
-                            <option value="0">Pilih Spesialisasi</option>
-                            <option th:each="dataSpesialisasi : ${dataSpesialisasi}" 
+                        <label for="spesialisasi" class="col-sm-2 col-form-label">Spesialisasi</label>
+                        <div class="form-group col-sm-8">
+                          <select class="form-control" name="spesialisasi"  id="spesialisasi" th:field="*{listPustakawan}">
+                            <option th:each="dataSpesialisasi : ${dataSpesialisasi}"
                               th:value="${dataSpesialisasi.id}" 
-                              th:text="${dataSpesialisasi.nama}">
+                              th:text="${dataSpesialisasi.nama}"
+                              th:selected="${dataPustakawan.listPustakawan.contains(dataSpesialisasi)}">
                             </option>
                           </select>
                         </div>
+                        <div class="form-group col-md-2">
+                          <button type="submit" class="btn btn-info" name="tambah">Tambah</button>	
+                        </div>	
                       </div>
                     </div>
                     <div class="card-footer clearfix">

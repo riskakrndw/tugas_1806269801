@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.apap.tugas.tugas_1806269801.model.SpesialisasiModel;
 import com.apap.tugas.tugas_1806269801.repository.SpesialisasiDb;
@@ -21,9 +22,9 @@ public class SpesialisasiServiceImpl implements SpesialisasiService{
     private SpesialisasiDb spesialisasiDb;
 
     @Override
-    public SpesialisasiModel getSpesialisasiById(long id){
-        return spesialisasiDb.findById(id);
-    }
+	public Optional<SpesialisasiModel> getSpesialisasiById(long id) {
+		return spesialisasiDb.findById(id);
+	}
 
     @Override
     public List<SpesialisasiModel> getAllSpesialisasi(){
