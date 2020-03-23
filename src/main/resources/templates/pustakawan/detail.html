@@ -56,17 +56,17 @@
                     <dd class="col-sm-8" th:if="${data.jenisKelamin == 2}">Perempuan</dd>
                     <dt class="col-sm-4">Spesialisasi</dt>
                     <dd class="col-sm-8">
-                        <span th:if="${data.spesialisasiPustakawan.size() == 0}">-</span>
-                        <span th:if="${data.spesialisasiPustakawan.size() == 1}">
-                            <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
+                        <span th:if="${data.listPustakawan.size() == 0}">-</span>
+                        <span th:if="${data.listPustakawan.size() == 1}">
+                            <span th:each="spesialisasi : ${data.listPustakawan}">
                                 <span th:text="${spesialisasi.nama}"></span>
                             </span>
                         </span>
-                        <span th:if="${data.spesialisasiPustakawan.size() > 1}">
-                            <span th:each="spesialisasi : ${data.spesialisasiPustakawan}">
-                                <span th:if="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                        <span th:if="${data.listPustakawan.size() > 1}">
+                            <span th:each="spesialisasi : ${data.listPustakawan}">
+                                <span th:if="${spesialisasiStat.index != data.listPustakawan.size()-1}"
                                     th:text="${spesialisasi.nama} + ','"></span>
-                                <span th:unless="${spesialisasiStat.index != data.spesialisasiPustakawan.size()-1}"
+                                <span th:unless="${spesialisasiStat.index != data.listPustakawan.size()-1}"
                                     th:text="${spesialisasi.nama}"></span>
                             </span>
                         </span>

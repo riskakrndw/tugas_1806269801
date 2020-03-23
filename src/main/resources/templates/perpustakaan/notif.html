@@ -33,16 +33,17 @@
 				<div class="col-md-12">
 					<div class="callout callout-success">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<h5><i class="icon fas fa-check-circle"></i> Notification!</h5>
-						Tambah Data Pustakawan berhasil!
+						<h4><i class="icon fas fa-check-circle"></i> Notification!</h4>
+                        <a th:if="${typeMsg} == 'add'" th:text="${msg}"></a>
+                        <a th:if="${typeMsg} == 'delete'" th:text="${msg}"></a>
 					</div>
 
-					<a th:href="@{'/'}">
-						<button type="button" class="btn bg-gradient-secondary"> <i class="icon fas fa-angle-left"> Kembali ke Beranda</i></button>
+					<a th:href="@{'/perpustakaan'}">
+						<button type="button" class="btn bg-gradient-secondary"> <i class="icon fas fa-angle-left"> Kembali ke Data Perpustakaan</i></button>
 					</a>
 
-					<a th:href="@{'/pustakawan/tambah'}">
-						<button type="button" class="btn bg-gradient-info"><i class="icon fas fa-plus"> Add More Data</i></button>
+					<a th:href="@{'/perpustakaan/tambah'}">
+						<button type="button" class="btn bg-gradient-info"><i class="icon fas fa-plus"> Tambah Data</i></button>
 					</a>
 				</div>
             </div>

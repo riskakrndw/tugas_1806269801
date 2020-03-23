@@ -60,15 +60,23 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a th:href="@{'/'}" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Beranda</p>
+                            <a th:href="@{'/'}" class="nav-link active" th:if="${activeNav} == 'beranda'">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Beranda</p>
+                            </a>
+                            <a th:href="@{'/'}" class="nav-link" th:unless="${activeNav} == 'beranda'">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Beranda</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a th:href="@{'/perpustakaan'}" class="nav-link active" th:if="${activeNav} == 'perpustakaan'">
                             <i class="nav-icon fas fa-file"></i>
                             <p>Perpustakaan</p>
+                            </a>
+                            <a th:href="@{'/perpustakaan'}" class="nav-link" th:unless="${activeNav} == 'perpustakaan'">
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>Perpustakaan</p>
                             </a>
                         </li>
                         <li class="nav-item">

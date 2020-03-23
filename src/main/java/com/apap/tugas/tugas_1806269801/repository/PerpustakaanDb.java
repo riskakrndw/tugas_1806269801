@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PerpustakaanDb extends JpaRepository<PerpustakaanModel, Long>{
     PerpustakaanModel findById(long id);
+
+    void deleteById(long id);
 }

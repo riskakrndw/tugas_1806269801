@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Beranda</title>
+      <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <style>
+      .col-sm-10.jenkel {
+        padding-top: 10px;
+      }
+    </style>
+    <div class="wrapper">
+
+      <object th:include="fragments/fragment :: navbar" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: aside" th:remove="tag"></object>
+
+    
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Tambah Perpustakaan</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item">Tambah</li>
+                    <li class="breadcrumb-item active">Perpustakaan</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <a th:href="@{'/perpustakaan'}">
+                  <button type="button" class="btn bg-gradient-secondary"> < Kembali ke Data Perpustakaan</button>
+                </a>
+                <br><br>
+                <div class="card card-info">
+                  <div class="card-header">
+                    <h4 class="card-title">Form Tambah Pustakawan</h4>
+                  </div>
+                  <form th:action="@{/perpustakaan/tambah}" th:object="${dataPerpustakaan}" method="POST">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                            <div class="col-sm-10">
+                            <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lokasi" class="col-sm-2 col-form-label">Lokasi</label>
+                            <div class="col-sm-10">
+                            <textarea type="text" name="lokasi" class="form-control" id="lokasi" placeholder="Lokasi"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer clearfix">
+                      <button type="submit" class="btn bg-gradient-info" name="submit">Simpan</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <object th:include="fragments/fragment :: footer" th:remove="tag"></object>
+      <object th:include="fragments/fragment :: aside_control" th:remove="tag"></object>
+    </div>
+  </body>
+</html>

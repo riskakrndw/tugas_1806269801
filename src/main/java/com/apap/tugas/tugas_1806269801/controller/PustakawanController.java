@@ -11,17 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
-import org.thymeleaf.util.StringUtils;
-import javax.validation.ConstraintViolationException;
-import javax.validation.constraints.Size;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 /**
@@ -40,6 +33,8 @@ public class PustakawanController{
     public String view(@RequestParam(value = "nip") String nip, Model model){
         PustakawanModel dataPustakawan = pustakawanService.getPustakawanByNip(nip);
         model.addAttribute("data", dataPustakawan);
+        String activeNav = "beranda";
+        model.addAttribute("activeNav", activeNav);
         return "pustakawan/detail";
     }
 
@@ -49,6 +44,8 @@ public class PustakawanController{
         PustakawanModel pustakawan = new PustakawanModel();
         model.addAttribute("dataSpesialisasi", spesialisasi);
         model.addAttribute("dataPustakawan", pustakawan);
+        String activeNav = "beranda";
+        model.addAttribute("activeNav", activeNav);
         return "pustakawan/formAdd";
     }
 
@@ -63,7 +60,21 @@ public class PustakawanController{
             dataSpesialisasi.getSpesialisasiPustakawan().add(dataPustakawan);
             spesialisasiService.addSpesialisasi(dataSpesialisasi);
         }
+        String activeNav = "beranda";
+        model.addAttribute("activeNav", activeNav);
         return "pustakawan/notif";
     }
+
+    @RequestMapping(value = "/pustakawan/update/{id}", method = RequestMethod.GET)
+    public String update(@PathVariable(value = "id") long id, Model model){
+        PustakawanModel pustakawan = pustakawanService.getPustakawanById(id);
+        List<SpesialisasiModel> spesialisasi = spesialisasiService.getAllSpesialisasi();
+        model.addAttribute("dataPustakawan", pustakawan);
+        model.addAttribute("dataSpesialisasi", spesialisasi);
+        String activeNav = "beranda";
+        model.addAttribute("activeNav", activeNav);
+        return "pustakawan/formEdit";
+    }
+    
     
 }

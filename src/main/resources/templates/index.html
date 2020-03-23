@@ -33,7 +33,7 @@
             <div class="row">
               <div class="col-md-12">
                 <a th:href="@{'/pustakawan/tambah'}">
-                  <button type="button" class="btn bg-gradient-info">Tambah Data Pustakawan</button>
+                  <button type="button" class="btn bg-gradient-info"><i class="icon fas fa-plus"> Tambah Data Pustakawan</i></button>
                 </a>
                 <br><br>
                 <div class="card card-info">
@@ -84,13 +84,13 @@
                       </td>
                       <td>
                         <a th:href="@{'/'}">
-                          <button type="button" class="btn btn-outline-primary btn-sm">Jadwal</button>
+                          <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-calendar-plus"> Jadwal</i></button>
                         </a>
                         <a th:href="@{'/pustakawan/update/' + ${data.id}}">
-                          <button type="button" class="btn btn-outline-primary btn-sm">Ubah</button>
+                          <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"> Ubah </i></button>
                         </a>
                         <a th:href="@{'/pustakawan/delete/' + ${data.id}}">
-                          <button type="button" class="btn btn-outline-danger btn-sm">Hapus</button>
+                          <button type="button" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"> Hapus</i></button>
                         </a>
                       </td>
                     </tr>

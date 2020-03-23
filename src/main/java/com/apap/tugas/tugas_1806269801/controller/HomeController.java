@@ -25,6 +25,8 @@ public class HomeController{
     private String index(Model model){
         List<PustakawanModel> dataPustakawan = pustakawanService.getAllPustakawan();
         model.addAttribute("data", dataPustakawan);
+        String activeNav = "beranda";
+        model.addAttribute("activeNav", activeNav);
         return "index";
     }
 }
