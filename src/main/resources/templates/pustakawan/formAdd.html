@@ -80,9 +80,15 @@
                           </div>
                         </div>
                       </div>
+                      <br>
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <button type="submit" class="btn btn-info btn-block" name="addRow">Tambah Spesialisasi</button>
+                        </div>
+                      </div>
                       <div class="form-group row">
                         <label for="spesialisasi" class="col-sm-2 col-form-label">Spesialisasi</label>
-                        <div class="form-group col-md-8">
+                        <div class="col-md-8">
                           <select class="form-control" name="spesialisasi" id= "spesialisasi"  th:field="*{listPustakawan}">
                             <option value="0">Pilih Spesialisasi</option>
                             <option th:each="dataSpesialisasi : ${dataSpesialisasi}" 
@@ -91,9 +97,9 @@
                             </option>
                           </select>
                         </div>
-                        <div class="form-group col-md-2">
-                          <button type="submit" class="btn btn-info" name="tambah">Tambah</button>	
-                        </div>	
+                        <div class="col-md-2">
+                          <button type="submit" class="btn btn-danger" name="removeRow">Hapus</button>
+                        </div>
                       </div>
                     </div>
                     <div class="card-footer clearfix">

@@ -25,19 +25,17 @@ public class PerpustakaanModel implements Serializable{
     private String lokasi;
 
     @OneToMany(
-        mappedBy = "perpustakaan",
-        fetch = FetchType.LAZY,
-        cascade = CascadeType.PERSIST
+        mappedBy = "perpustakaan"
     )
 
-    private List<TempatPustakawanModel> tempatPustakawan;
+    private List<JadwalPustakawanModel> jadwalPustakawan;
 
-    public void setTempatPustakawan(List<TempatPustakawanModel> tempatPustakawan){
-        this.tempatPustakawan = tempatPustakawan;
+    public void setJadwalPustakawan(List<JadwalPustakawanModel> jadwalPustakawan){
+        this.jadwalPustakawan = jadwalPustakawan;
     }
 
-    public List<TempatPustakawanModel> getTempatPustakawan(){
-        return tempatPustakawan;
+    public List<JadwalPustakawanModel> getJadwalPustakawan(){
+        return jadwalPustakawan;
     }
     
     public void setId(long id){

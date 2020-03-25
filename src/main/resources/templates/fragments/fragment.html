@@ -80,7 +80,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a th:href="@{'/statistik'}" class="nav-link active" th:if="${activeNav} == 'statistik'">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>Statistik</p>
+                            </a>
+                            <a th:href="@{'/statistik'}" class="nav-link" th:unless="${activeNav} == 'statistik'">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>Statistik</p>
                             </a>

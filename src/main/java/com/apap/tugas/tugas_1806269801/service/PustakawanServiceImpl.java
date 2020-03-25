@@ -57,6 +57,12 @@ public class PustakawanServiceImpl implements PustakawanService{
     }
 
     @Override
+    public void addJadwal(long id, PustakawanModel pustakawan) {
+        PustakawanModel newPustakawan = getPustakawanById(id);
+        newPustakawan.setJadwalPustakawan(pustakawan.getJadwalPustakawan());
+    }
+
+    @Override
     public void deleteById(long id){
         pustakawanDb.delete(this.getPustakawanById(id));
     }

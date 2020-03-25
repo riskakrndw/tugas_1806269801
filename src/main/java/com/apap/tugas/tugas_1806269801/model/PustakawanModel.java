@@ -55,8 +55,8 @@ public class PustakawanModel implements Serializable{
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "spesialisasi_pustakawan",
-        joinColumns = @JoinColumn(name = "pustakawan_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "spesialisasi_id", referencedColumnName = "id")
+        joinColumns = @JoinColumn(name = "pustakawan_id"),
+        inverseJoinColumns = @JoinColumn(name = "spesialisasi_id")
     )
 
     private List<SpesialisasiModel> listPustakawan;
@@ -71,18 +71,18 @@ public class PustakawanModel implements Serializable{
 
     @OneToMany(
         mappedBy = "pustakawan",
-        fetch = FetchType.LAZY,
-        cascade = CascadeType.PERSIST
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
     )
 
-    private List<TempatPustakawanModel> tempatPustakawan;
+    private List<JadwalPustakawanModel> jadwalPustakawan;
 
-    public void setTempatPustakawan(List<TempatPustakawanModel> tempatPustakawan){
-        this.tempatPustakawan = tempatPustakawan;
+    public void setJadwalPustakawan(List<JadwalPustakawanModel> jadwalPustakawan){
+        this.jadwalPustakawan = jadwalPustakawan;
     }
 
-    public List<TempatPustakawanModel> getTempatPustakawan(){
-        return tempatPustakawan;
+    public List<JadwalPustakawanModel> getJadwalPustakawan(){
+        return jadwalPustakawan;
     }
 
     public void setId(long id){

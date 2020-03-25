@@ -16,6 +16,8 @@ public interface PustakawanService{
     void generateNip(PustakawanModel pustakawan);
     void addPustakawan(PustakawanModel pustakawan);
     void updatePustakawan(long id, PustakawanModel pustakawan);
+    
+    void addJadwal(long id, PustakawanModel pustakawan);
 
     void deleteById(long id);
 }

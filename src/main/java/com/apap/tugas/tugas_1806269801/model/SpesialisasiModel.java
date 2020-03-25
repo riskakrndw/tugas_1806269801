@@ -23,6 +23,17 @@ public class SpesialisasiModel implements Serializable{
     @Size(max = 500)
     @Column(name = "deskripsi")
     private String deskripsi;
+
+    @ManyToMany(mappedBy = "listPustakawan")
+    private List<PustakawanModel> daftarPustakawan;
+
+    public void setDaftarPustakawan(List<PustakawanModel> daftarPustakawan){
+        this.daftarPustakawan = daftarPustakawan;
+    }
+
+    public List<PustakawanModel> getDaftarPustakawan(){
+        return daftarPustakawan;
+    }
     
     public void setId(long id){
         this.id = id;

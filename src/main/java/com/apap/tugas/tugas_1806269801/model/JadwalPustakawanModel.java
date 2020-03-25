@@ -12,8 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tempat_pustakawan")
-public class TempatPustakawanModel implements Serializable {
+@Table(name = "jadwal_pustakawan")
+public class JadwalPustakawanModel implements Serializable {
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "pustakawan_id")
