@@ -69,7 +69,7 @@ public class PustakawanServiceImpl implements PustakawanService{
 
     @Override
     public void deleteJadwal(long id){
-        PustakawanModel pustakawan = this.getPustakawanById(id);
+        PustakawanModel pustakawan = getPustakawanById(id);
         pustakawan.getJadwalPustakawan().removeAll(pustakawan.getJadwalPustakawan());
     }
 }
