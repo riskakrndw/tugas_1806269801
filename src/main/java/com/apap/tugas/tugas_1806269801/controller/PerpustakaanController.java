@@ -29,6 +29,8 @@ public class PerpustakaanController{
         model.addAttribute("data", dataPerpustakaan);
         String activeNav = "perpustakaan";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Perpustakaan";
+        model.addAttribute("nav", nav);
         return "perpustakaan/index";
     }
 
@@ -37,6 +39,8 @@ public class PerpustakaanController{
         model.addAttribute("dataPerpustakaan", new PerpustakaanModel());
         String activeNav = "perpustakaan";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Tambah Perpustakaan";
+        model.addAttribute("nav", nav);
         return "perpustakaan/formAdd";
     }
 
@@ -45,6 +49,8 @@ public class PerpustakaanController{
         perpustakaanService.addPerpustakaan(perpustakaan);
         String activeNav = "perpustakaan";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Notification";
+        model.addAttribute("nav", nav);
         String typeMsg = "add";
         model.addAttribute("typeMsg", typeMsg);
         String msg = "Data Perpustakaan Berhasil Ditambahkan!";
@@ -57,6 +63,8 @@ public class PerpustakaanController{
         perpustakaanService.deletePerpustakaan(id);
         String activeNav = "perpustakaan";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Notification";
+        model.addAttribute("nav", nav);
         String typeMsg = "delete";
         model.addAttribute("typeMsg", typeMsg);
         String msg = "Data Perpustakaan Berhasil Dihapus!";

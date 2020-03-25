@@ -66,4 +66,10 @@ public class PustakawanServiceImpl implements PustakawanService{
     public void deleteById(long id){
         pustakawanDb.delete(this.getPustakawanById(id));
     }
+
+    @Override
+    public void deleteJadwal(long id){
+        PustakawanModel pustakawan = this.getPustakawanById(id);
+        pustakawan.getJadwalPustakawan().removeAll(pustakawan.getJadwalPustakawan());
+    }
 }

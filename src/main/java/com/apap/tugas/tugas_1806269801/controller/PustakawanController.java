@@ -41,6 +41,8 @@ public class PustakawanController{
         model.addAttribute("data", dataPustakawan);
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Detail Pustakawan";
+        model.addAttribute("nav", nav);
         return "pustakawan/detail";
     }
 
@@ -52,6 +54,8 @@ public class PustakawanController{
         model.addAttribute("dataPustakawan", pustakawan);
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Tambah Pustakawan";
+        model.addAttribute("nav", nav);
         String type = "success";
         model.addAttribute("type", type);
         String typeMsg = "add";
@@ -70,6 +74,8 @@ public class PustakawanController{
         }
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Notification";
+        model.addAttribute("nav", nav);
         String type = "success";
         model.addAttribute("type", type);
         String typeMsg = "add";
@@ -87,6 +93,8 @@ public class PustakawanController{
         model.addAttribute("dataSpesialisasi", spesialisasi);
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Ubah Pustakawan";
+        model.addAttribute("nav", nav);
         return "pustakawan/formEdit";
     }
 
@@ -95,6 +103,8 @@ public class PustakawanController{
         pustakawanService.updatePustakawan(id, pustakawan);
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Notification";
+        model.addAttribute("nav", nav);
         String type = "success";
         model.addAttribute("type", type);
         String typeMsg = "edit";
@@ -109,6 +119,8 @@ public class PustakawanController{
         pustakawanService.deleteById(id);
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Notification";
+        model.addAttribute("nav", nav);
         String type = "success";
         model.addAttribute("type", type);
         String typeMsg = "delete";
@@ -126,6 +138,8 @@ public class PustakawanController{
         model.addAttribute("dataPerpustakaan", perpustakaan);
         String activeNav = "pencarian";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Pencarian";
+        model.addAttribute("nav", nav);
         return "pencarian/index";
     }
 

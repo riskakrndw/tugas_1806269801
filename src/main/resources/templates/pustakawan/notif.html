@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Beranda</title>
-      <object th:include="fragments/fragment :: css" th:remove="tag"></object>
-      <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <title th:text="${nav}"></title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">

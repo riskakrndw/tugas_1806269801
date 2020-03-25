@@ -26,6 +26,8 @@ public class SpesialisasiController{
         model.addAttribute("spesialisasi", spesialisasi);
         String activeNav = "statistik";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Statistik";
+        model.addAttribute("nav", nav);
         return "statistik/index";
     }
 }

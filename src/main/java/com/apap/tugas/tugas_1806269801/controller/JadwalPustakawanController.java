@@ -44,6 +44,8 @@ public class JadwalPustakawanController{
         model.addAttribute("listJadwal", pustakawan.getJadwalPustakawan());
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Jadwal Pustakawan";
+        model.addAttribute("nav", nav);
         return "pustakawan/formAddJadwal";
     }
 
@@ -56,11 +58,29 @@ public class JadwalPustakawanController{
         pustakawanService.addJadwal(pustakawan.getId(), pustakawan);
         String activeNav = "beranda";
         model.addAttribute("activeNav", activeNav);
+        String nav = "Notification";
+        model.addAttribute("nav", nav);
         String type = "success";
         model.addAttribute("type", type);
         String typeMsg = "add";
         model.addAttribute("typeMsg", typeMsg);
         String msg = "Jadwal Berhasil Ditambahkan!";
+        model.addAttribute("msg", msg);
+        return "pustakawan/notif";
+    }
+
+    @RequestMapping(value = "/jadwal/delete/{pustakawan_id}")
+    private String delete(@PathVariable(value = "pustakawan_id") long pustakawan_id, Model model){
+        pustakawanService.deleteJadwal(pustakawan_id);
+        String activeNav = "beranda";
+        model.addAttribute("activeNav", activeNav);
+        String nav = "Notification";
+        model.addAttribute("nav", nav);
+        String type = "success";
+        model.addAttribute("type", type);
+        String typeMsg = "delete";
+        model.addAttribute("typeMsg", typeMsg);
+        String msg = "Data Pustakawan Berhasil Dihapus!";
         model.addAttribute("msg", msg);
         return "pustakawan/notif";
     }

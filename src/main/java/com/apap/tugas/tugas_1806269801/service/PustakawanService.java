@@ -20,4 +20,5 @@ public interface PustakawanService{
     void addJadwal(long id, PustakawanModel pustakawan);
 
     void deleteById(long id);
+    void deleteJadwal(long id);
 }
